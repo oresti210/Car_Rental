@@ -1,27 +1,29 @@
 package model;
 
-public class Customer {
-    private String id;
-    private String name;
-    private String email;
+import java.util.ArrayList;
+import java.util.List;
+import rental.Rental;
 
-    //Constructor
-    public Customer(String id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
+public class Customer extends User {
+    private String licenseNumber;
+    private List<Rental> rentalHistory = new ArrayList<>();
+
+    public Customer(int userId, String name, String email, String phoneNumber, String password, String licenseNumber) {
+        super(userId, name, email, phoneNumber, password);
+        this.licenseNumber = licenseNumber;
     }
 
-    //Get Method
-    public String getId() {
-        return id;
-    }
+    public String getLicenseNumber() { return licenseNumber; }
+    public void setLicenseNumber(String licenseNumber) { this.licenseNumber = licenseNumber; }
 
-    public String getName() {
-        return name;
-    }
+    public List<Rental> getRentalHistory() { return rentalHistory; }
+    public void addRentalToHistory(Rental r) { rentalHistory.add(r); }
 
-    public String getEmail() {
-        return email;
+    @Override
+    public String getRole() { return "Customer"; }
+
+    public void displayCustomerInfo() {
+        System.out.println("Customer: " + name + " | License: " + licenseNumber + " | Email: " + email);
     }
 }
+

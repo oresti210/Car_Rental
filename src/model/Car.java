@@ -1,38 +1,28 @@
 package model;
 
-public class Car {
-    private String id;
-    private String model;
-    private int year;
-    private double dailyRate;
+public class Car extends Vehicle {
+    protected int year;
+    protected double rentalPricePerDay;
+    protected boolean available;
 
-    //Constructor
-    public Car(String id, String model, int year, double dailyRate) {
-        this.id = id;
-        this.model = model;
+    public Car(int id, String brand, String model, int year, double rentalPricePerDay) {
+        super(id, brand, model);
         this.year = year;
-        this.dailyRate = dailyRate;
+        this.rentalPricePerDay = rentalPricePerDay;
+        this.available = true;
     }
 
-    // Get Method
-    public String getId() {
-        return id;
-    }
+    public boolean isAvailable() { return available; }
+    public void setAvailable(boolean available) { this.available = available; }
 
-    public String getModel() {
-        return model;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public double getDailyRate() {
-        return dailyRate;
+    @Override
+    public double calculateRentalCost(int days) {
+        return rentalPricePerDay * days;
     }
 
     @Override
-    public String toString() {
-        return model + " (" + year + ")";
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Year: " + year + ", Price/day: " + rentalPricePerDay + ", Available: " + available);
     }
 }
