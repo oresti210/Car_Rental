@@ -14,7 +14,7 @@ public class CorporateCustomer extends Customer {
     public double applyDiscount(double amount) { return amount * (1.0 - discountRate); }
 
     @Override
-    public String getRole() { return "CorporateCustomer"; }
+    public String getRole() { return "Corporate Customer"; }
 
     public String getCompanyName() { return companyName; }
 }

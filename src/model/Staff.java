@@ -10,7 +10,17 @@ public class Staff extends User {
         this.department = department;
     }
 
-    @Override
+    
+    public int getEmployeeId() {
+		return employeeId;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+
+	@Override
     public String getRole() { return "Staff"; }
 
     public void assistCustomer() { /* placeholder */ }

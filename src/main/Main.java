@@ -21,6 +21,7 @@ public class Main {
         carManager.addCar(s2);
 
         Customer cust = new Customer(1, "Alice", "alice@example.com", "+355123", "secret", "L12345");
+        cust.displayUserInfo();
         userManager.addUser(cust);
 
         System.out.println("Available cars:");

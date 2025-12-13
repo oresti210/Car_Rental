@@ -12,18 +12,19 @@ public class PaymentManager implements Payable {
 
     private List<PaymentRecord> paymentRecords;
 
-    public PaymentManager() {
+    @Override
+	public void processPayment(double amount) throws InvalidPaymentException {
+	    if (amount <= 0) {
+	        throw new InvalidPaymentException("Payment amount must be greater than zero.");
+	    }
+	    System.out.println("[PaymentManager] Processing payment of $" + amount);
+	}
+
+
+	public PaymentManager() {
         this.paymentRecords = new ArrayList<>();
     }
 
-
-    @Override
-    public void processPayment(double amount) throws InvalidPaymentException {
-        if (amount <= 0) {
-            throw new InvalidPaymentException("Payment amount must be greater than zero.");
-        }
-        System.out.println("[PaymentManager] Processing payment of $" + amount);
-    }
 
     public void makePayment(Customer customer, Rental rental, String method) throws InvalidPaymentException {
         if (customer == null || rental == null) {
